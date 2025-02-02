@@ -3,5 +3,5 @@ allure-pytest
 selene>=2.0.0rc4
 Appium-Python-Client~=4.4.0
 selenium~=4.27.1
-pydantic~=2.10.4
+pydantic_settings~=2.7.1
 requests~=2.32.3
