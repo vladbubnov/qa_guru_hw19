@@ -4,6 +4,7 @@ from selene import browser
 import os
 
 from config import settings
+from utils import attach
 
 
 @pytest.fixture(scope='function', autouse=True)
@@ -30,5 +31,12 @@ def mobile_management():
     browser.config.timeout = float(os.getenv('timeout', '10.0'))
 
     yield
+    attach.add_screenshot(browser)
+
+    attach.add_xml(browser)
+
+    session_id = browser.driver.session_id
+
+    attach.add_video(session_id, settings.USER_NAME, settings.ACCESS_KEY)
 
     browser.quit()
